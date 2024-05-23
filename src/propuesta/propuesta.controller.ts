@@ -1,4 +1,15 @@
-import { Controller } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, UseInterceptors } from '@nestjs/common';
+import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors/business-errors.interceptor';
+import { PropuestaService } from './propuesta.service';
 
 @Controller('propuesta')
-export class PropuestaController {}
+@UseInterceptors(BusinessErrorsInterceptor)
+export class PropuestaController {
+  constructor(private readonly propuestaService: PropuestaService) {}
+
+  @Get()
+  async findAll() {
+    return await this.propuestaService.findAllPropuesta();
+  }
+}

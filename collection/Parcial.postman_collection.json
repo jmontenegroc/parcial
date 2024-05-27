@@ -1,0 +1,1243 @@
+{
+	"info": {
+		"_postman_id": "1f00a59c-8703-4abc-8e9d-8d6c0a10f045",
+		"name": "Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19607086"
+	},
+	"item": [
+		{
+			"name": "Crear Profesor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cedula\": 12345678,\r\n  \"nombre\": \"Profesor X\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"numeroExtension\": 1234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/profesor",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"profesor"
+					]
+				},
+				"description": "### Create Professor\n\nHacer un ejemplo válido y otro en el que el grupo de investigación falle permite probar el manejo de casos en los que el grupo de investigación puede estar ausente o ser inválido. Esto ayuda a verificar si la API maneja correctamente situaciones donde el grupo de investigación es opcional o si hay validaciones para asegurar que el grupo de investigación proporcionado sea válido.\n\nThis endpoint allows the creation of a new professor.\n\n#### Request Body\n\n- cedula (number): The identification number of the professor.\n    \n- nombre (string): The name of the professor.\n    \n- grupoInvestigacion (string): The research group the professor belongs to.\n    \n- numeroExtension (number): The extension number of the professor.\n    \n\n#### Response\n\nThe response is a JSON object with the following properties:\n\n- cedula (number): The identification number of the professor.\n    \n- nombre (string): The name of the professor.\n    \n- grupoInvestigacion (string): The research group the professor belongs to.\n    \n- numeroExtension (number): The extension number of the professor.\n    \n- id (string): The unique identifier of the created professor.\n    \n\n#### JSON Schema\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"cedula\": {\n            \"type\": \"number\"\n        },\n        \"nombre\": {\n            \"type\": \"string\"\n        },\n        \"grupoInvestigacion\": {\n            \"type\": \"string\"\n        },\n        \"numeroExtension\": {\n            \"type\": \"number\"\n        },\n        \"id\": {\n            \"type\": \"string\"\n        }\n    }\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "ejemploValido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 12345678,\r\n  \"nombre\": \"Profesor X\",\r\n  \"grupoInvestigacion\": \"TICSW\",\r\n  \"numeroExtension\": 1234\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/profesor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "137"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"89-U60WCZqEidbllO8/hKawZ95DoVI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:34:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cedula\": 12345678,\n    \"nombre\": \"Profesor X\",\n    \"grupoInvestigacion\": \"TICSW\",\n    \"numeroExtension\": 1234,\n    \"id\": \"25d759bd-9e7b-434c-bed2-6f64602f454b\"\n}"
+				},
+				{
+					"name": "ejemploGrupoInvestigacionInvalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cedula\": 12345678,\r\n  \"nombre\": \"Profesor X\",\r\n  \"grupoInvestigacion\": \"ABCD\",\r\n  \"numeroExtension\": 1234\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/profesor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:38:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Propuesta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Propuesta de Proyecto de Investigación\",\r\n    \"descripcion\": \"Esta es una descripción detallada de la propuesta del proyecto de investigación.\",\r\n    \"palabraClaves\": \"investigación, proyecto, propuesta\",\r\n    \"profesor\": \"{{profesorId}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/propuesta",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propuesta"
+					]
+				},
+				"description": "\n# Create Proposal\nThis endpoint allows you to create a new proposal.\n\n## Request Body\n- `titulo` (string): The title of the proposal.\n- `descripcion` (string): The description of the proposal.\n- `palabraClaves` (string): The keywords associated with the proposal.\n- `profesor` (string): The name of the professor associated with the proposal.\n\n## Response\n- Status: 201\n- Content-Type: application/json\n- `titulo` (string): The title of the created proposal.\n- `descripcion` (string): The description of the created proposal.\n- `palabraClaves` (string): The keywords associated with the created proposal.\n- `profesor` (string): The name of the professor associated with the created proposal.\n- `id` (string): The unique identifier of the created proposal.\n"
+			},
+			"response": [
+				{
+					"name": "ejemploTituloInvalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"\",\r\n  \"descripcion\": \"Esta es una descripción detallada de la propuesta del proyecto de investigación.\",\r\n  \"palabraClaves\": \"investigación, proyecto, propuesta\",\r\n  \"profesor\": {{profesorId}}\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/propuesta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propuesta"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:11:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				},
+				{
+					"name": "ejemploValido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Propuesta de Proyecto de Investigación\",\r\n    \"descripcion\": \"Esta es una descripción detallada de la propuesta del proyecto de investigación.\",\r\n    \"palabraClaves\": \"investigación, proyecto, propuesta\",\r\n    \"profesor\": \"{{profesorId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/propuesta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propuesta"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "299"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12b-rY1+OYCXa09w0KdF/Zgne5/7Ww0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:44:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"titulo\": \"Propuesta de Proyecto de Investigación\",\n    \"descripcion\": \"Esta es una descripción detallada de la propuesta del proyecto de investigación.\",\n    \"palabraClaves\": \"investigación, proyecto, propuesta\",\n    \"profesor\": \"596aeaa6-ce48-4fd5-a2e8-8018a6684ac2\",\n    \"id\": \"426290f5-7b67-484a-a03d-d9b9394a81f5\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear Proyecto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fechaInicio\": \"2022-01-01T00:00:00.000Z\",\r\n  \"fechaFin\": \"2022-12-31T00:00:00.000Z\",\r\n  \"url\": \"https://proyecto.com\",\r\n  \"propuesta\": \"{{propuestaId}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/proyecto",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"proyecto"
+					]
+				},
+				"description": "### POST /proyecto\n\nThis endpoint is used to create a new project.\n\n#### Request Body\n\n- `fechaInicio` (string, optional): The start date of the project.\n    \n- `fechaFin` (string, optional): The end date of the project.\n    \n- `url` (string, optional): The URL related to the project.\n    \n- `propuesta` (string, optional): The proposal for the project.\n    \n\n#### Response\n\nThe response will be a JSON object with the following properties:\n\n- `fechaInicio` (string): The start date of the project.\n    \n- `fechaFin` (string): The end date of the project.\n    \n- `url` (string): The URL related to the project.\n    \n- `propuesta` (string): The proposal for the project.\n    \n- `id` (string): The unique identifier of the created project.\n    \n\n#### JSON Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"fechaInicio\": { \"type\": \"string\" },\n    \"fechaFin\": { \"type\": \"string\" },\n    \"url\": { \"type\": \"string\" },\n    \"propuesta\": { \"type\": \"string\" },\n    \"id\": { \"type\": \"string\" }\n  },\n  \"required\": [\"fechaInicio\", \"fechaFin\", \"url\", \"propuesta\", \"id\"]\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "ejemploFechaInvalida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fechaInicio\": \"2022-01-01T00:00:00.000Z\",\r\n  \"fechaFin\": \"2021-12-31T00:00:00.000Z\",\r\n  \"url\": \"https://proyecto.com\",\r\n  \"propuesta\": \"9d94224d-a269-4177-80b3-65d71bcb6e05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/proyecto",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"proyecto"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:21:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				},
+				{
+					"name": "ejemploValido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fechaInicio\": \"2022-01-01T00:00:00.000Z\",\r\n  \"fechaFin\": \"2022-12-31T00:00:00.000Z\",\r\n  \"url\": \"https://proyecto.com\",\r\n  \"propuesta\": \"{{propuestaId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/proyecto",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"proyecto"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "204"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"cc-lgB/nFJYF0DJTNKuXq6zTSdJZHM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:28:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"fechaInicio\": \"2022-01-01T00:00:00.000Z\",\n    \"fechaFin\": \"2022-12-31T00:00:00.000Z\",\n    \"url\": \"https://proyecto.com\",\n    \"propuesta\": \"3e98f364-3426-4b8f-ae87-37e0cac08382\",\n    \"id\": \"7b1da8cf-9133-4d15-aa8f-4c1660f5cd70\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener propuesta by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propuesta/{{propuestaId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propuesta",
+						"{{propuestaId}}"
+					]
+				},
+				"description": "\n# Retrieve Proposal Details\n\nThis endpoint retrieves the details of a specific proposal identified by the `propuestaId`.\n\n## Request\n\n### Request URL\n- Method: GET\n- URL: `{{baseUrl}}/propuesta/{{propuestaId}}`\n\n### Request Body\nThis request does not require a request body.\n\n## Response\n\nThe response will be a JSON object with the following schema:\n\n```json\n{\n  \"id\": \"string\",\n  \"titulo\": \"string\",\n  \"descripcion\": \"string\",\n  \"palabraClaves\": \"string\",\n  \"profesor\": {\n    \"id\": \"string\",\n    \"cedula\": \"number\",\n    \"nombre\": \"string\",\n    \"grupoInvestigacion\": \"string\",\n    \"numeroExtension\": \"number\"\n  },\n  \"proyecto\": {\n    \"id\": \"string\",\n    \"fechaInicio\": \"string\",\n    \"fechaFin\": \"string\",\n    \"url\": \"string\"\n  }\n}\n```\n\n### Response Body\n- `id`: The unique identifier of the proposal.\n- `titulo`: The title of the proposal.\n- `descripcion`: The description of the proposal.\n- `palabraClaves`: Keywords associated with the proposal.\n- `profesor`: Details of the professor associated with the proposal.\n  - `id`: The unique identifier of the professor.\n  - `cedula`: The identification number of the professor.\n  - `nombre`: The name of the professor.\n  - `grupoInvestigacion`: The research group of the professor.\n  - `numeroExtension`: The extension number of the professor.\n- `proyecto`: Details of the project associated with the proposal.\n  - `id`: The unique identifier of the project.\n  - `fechaInicio`: The start date of the project.\n  - `fechaFin`: The end date of the project.\n  - `url`: The URL of the project.\n\n"
+			},
+			"response": [
+				{
+					"name": "ejemploIdValido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/propuesta/{{propuestaId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propuesta",
+								"{{propuestaId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "563"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"233-FqE2Wkjy+zwrVPyhnCRL8krU8Gg\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:57:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"426290f5-7b67-484a-a03d-d9b9394a81f5\",\n    \"titulo\": \"Propuesta de Proyecto de Investigación\",\n    \"descripcion\": \"Esta es una descripción detallada de la propuesta del proyecto de investigación.\",\n    \"palabraClaves\": \"investigación, proyecto, propuesta\",\n    \"profesor\": {\n        \"id\": \"596aeaa6-ce48-4fd5-a2e8-8018a6684ac2\",\n        \"cedula\": 12345678,\n        \"nombre\": \"Profesor X\",\n        \"grupoInvestigacion\": \"TICSW\",\n        \"numeroExtension\": 1234\n    },\n    \"proyecto\": {\n        \"id\": \"2bf7387d-6d90-4657-90fc-f9e254b333ec\",\n        \"fechaInicio\": \"2022-01-01T00:00:00.000Z\",\n        \"fechaFin\": \"2022-12-31T00:00:00.000Z\",\n        \"url\": \"https://proyecto.com\"\n    }\n}"
+				},
+				{
+					"name": "ejemploIdInvalido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/propuesta/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propuesta",
+								"1"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2024 22:57:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar propuesta by Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propuesta/{{propuestaId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propuesta",
+						"{{propuestaId}}"
+					]
+				},
+				"description": "\n### DELETE /propuesta/{{propuestaId}}\n\nThis endpoint is used to delete a specific proposal.\n\n#### Request\nNo request body is required for this endpoint.\n\n- `propuestaId` (path parameter) - The unique identifier of the proposal to be deleted.\n\n#### Response\nThe response for this request is in XML format with a status code of 200. However, the response body is null.\n\n#### JSON Response Schema\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"number\",\n      \"description\": \"The status code of the response\"\n    },\n    \"content\": {\n      \"type\": \"string\",\n      \"description\": \"The content of the response\"\n    }\n  }\n}\n"
+			},
+			"response": [
+				{
+					"name": "Eliminar propuesta valido",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/propuesta/{{propuestaId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propuesta",
+								"{{propuestaId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 04:00:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar Profesor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/profesor/{{profesorId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"profesor",
+						"{{profesorId}}"
+					]
+				},
+				"description": "\n## Delete Professor\nThis endpoint is used to delete a specific professor.\n\n### Request\n- Method: DELETE\n- URL: `{{baseUrl}}/profesor/{{profesorId}}`\n- Path Parameters:\n  - `profesorId`: The unique identifier of the professor to be deleted.\n\n### Response\nThe response for this request is a JSON schema, which describes the structure of the response body. It includes the properties and their data types that can be expected in the response after deleting the professor.\n\n"
+			},
+			"response": [
+				{
+					"name": "ejemploProfesorSinPropuesta",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/profesor/027acf24-d830-47f1-a83c-150332c80897",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor",
+								"027acf24-d830-47f1-a83c-150332c80897"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 01:59:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ejemploProfesorConPropuesta",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/profesor/{{profesorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor",
+								"{{profesorId}}"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 01:59:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar Profesor by Cedula",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/profesor/cedula/{{cedulaProfesor}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"profesor",
+						"cedula",
+						"{{cedulaProfesor}}"
+					]
+				},
+				"description": "\n### Delete Professor by ID\nThis endpoint is used to delete a professor by their ID.\n\n#### Request\n- Method: DELETE\n- URL: `{{baseUrl}}/profesor/cedula/{{cedulaProfesor}}`\n- Path Parameters:\n  - `cedulaProfesor` (string, required): The ID of the professor to be deleted.\n\n#### Response\nThe response for this request is a JSON object with the following schema:\n```json\n{\n  \"message\": \"string\"\n}\n```\n- `message` (string): A message indicating the result of the deletion operation.\n"
+			},
+			"response": [
+				{
+					"name": "ejemploProfesorSinPropuesta",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/profesor/027acf24-d830-47f1-a83c-150332c80897",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor",
+								"027acf24-d830-47f1-a83c-150332c80897"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 01:59:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "ejemploProfesorConPropuesta",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/profesor/{{profesorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor",
+								"{{profesorId}}"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 01:59:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Propuestas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/propuesta",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"propuesta"
+					]
+				},
+				"description": "\n### Retrieve Propuesta\nThis endpoint makes an HTTP GET request to retrieve a list of proposals.\n\n#### Request\nNo request body is required for this request.\n\n#### Response\nThe response will be a JSON array of proposal objects with the following schema:\n```json\n[\n  {\n    \"id\": \"string\",\n    \"titulo\": \"string\",\n    \"descripcion\": \"string\",\n    \"palabraClaves\": \"string\",\n    \"profesor\": {\n      \"id\": \"string\",\n      \"cedula\": \"number\",\n      \"nombre\": \"string\",\n      \"grupoInvestigacion\": \"string\",\n      \"numeroExtension\": \"number\"\n    },\n    \"proyecto\": {\n      \"id\": \"string\",\n      \"fechaInicio\": \"string\",\n      \"fechaFin\": \"string\",\n      \"url\": \"string\"\n    }\n  }\n]\n```\n"
+			},
+			"response": [
+				{
+					"name": "Obtener Propuestas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/propuesta",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"propuesta"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "565"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"235-pt2uCIdW3S9ruebcin4Qqy9UVFg\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 02:01:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"14bc5466-339d-445b-9959-bb3230f0bfb0\",\n        \"titulo\": \"Propuesta de Proyecto de Investigación\",\n        \"descripcion\": \"Esta es una descripción detallada de la propuesta del proyecto de investigación.\",\n        \"palabraClaves\": \"investigación, proyecto, propuesta\",\n        \"profesor\": {\n            \"id\": \"ae600b56-7330-4d9f-9e36-24fc3b18e4e0\",\n            \"cedula\": 12345678,\n            \"nombre\": \"Profesor X\",\n            \"grupoInvestigacion\": \"TICSW\",\n            \"numeroExtension\": 1234\n        },\n        \"proyecto\": {\n            \"id\": \"f88d9722-97c0-4829-95af-3c5a31e59a30\",\n            \"fechaInicio\": \"2022-01-01T00:00:00.000Z\",\n            \"fechaFin\": \"2022-12-31T00:00:00.000Z\",\n            \"url\": \"https://proyecto.com\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Crear Estudiante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"codigo\": \"2020127252\",\r\n  \"creditosAprobados\": 120,\r\n  \"nombre\": \"Estudiante X\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/estudiante",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estudiante"
+					]
+				},
+				"description": "\n# Create New Student\n\nThis endpoint allows you to create a new student.\n\n## Request Body\n- `codigo` (string, required): The student's code.\n- `creditosAprobados` (number, required): The number of approved credits.\n- `nombre` (string, required): The student's name.\n\n## Response Body\nThe response will be a JSON object with the following properties:\n- `codigo` (string): The student's code.\n- `creditosAprobados` (number): The number of approved credits.\n- `nombre` (string): The student's name.\n- `id` (string): The unique identifier for the student.\n\n## JSON Schema for Response\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"codigo\": { \"type\": \"string\" },\n    \"creditosAprobados\": { \"type\": \"number\" },\n    \"nombre\": { \"type\": \"string\" },\n    \"id\": { \"type\": \"string\" }\n  },\n  \"required\": [\"codigo\", \"creditosAprobados\", \"nombre\", \"id\"]\n}\n"
+			},
+			"response": [
+				{
+					"name": "ejemploCodigoValido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codigo\": \"2020127252\",\r\n  \"creditosAprobados\": 120,\r\n  \"nombre\": \"Estudiante X\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/estudiante",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "115"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"73-7Qni7auaOvTfszgG69+auBPL/UU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 02:14:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"codigo\": \"2020127252\",\n    \"creditosAprobados\": 120,\n    \"nombre\": \"Estudiante X\",\n    \"id\": \"3558ced6-a95b-4e2d-903e-25c8cf51d60c\"\n}"
+				},
+				{
+					"name": "ejemploCodigoInvalido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codigo\": \"202012725\",\r\n  \"creditosAprobados\": 120,\r\n  \"nombre\": \"Estudiante X\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/estudiante",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estudiante"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 02:15:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Estudiante by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/estudiante/{{estudianteId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estudiante",
+						"{{estudianteId}}"
+					]
+				},
+				"description": "# Get Estudiante by ID\n\nThis endpoint retrieves information about a specific student based on the provided student ID.\n\n## Request\n\n### Path Parameters\n\n- `estudianteId` (string) - The unique identifier of the student.\n    \n\n## Response\n\nThe response for this request will be a JSON object with the following properties:\n\n- `id` (string) - The unique identifier of the student.\n    \n- `codigo` (string) - The student's code.\n    \n- `creditosAprobados` (integer) - The number of approved credits for the student.\n    \n- `nombre` (string) - The name of the student.\n    \n- `proyecto` (object) - The project details associated with the student, if any.\n    \n\n### JSON Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": { \"type\": \"string\" },\n    \"codigo\": { \"type\": \"string\" },\n    \"creditosAprobados\": { \"type\": \"integer\" },\n    \"nombre\": { \"type\": \"string\" },\n    \"proyecto\": { \"type\": [\"object\", \"null\"] }\n  }\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Obtener Estudiante by Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/estudiante/{{estudianteId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estudiante",
+								"{{estudianteId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "131"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"83-BIa2uMtzWlcavCTjBVvgAMSaRGU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 02:33:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2dfcb9c5-7799-4c85-94ea-aff7d71d86da\",\n    \"codigo\": \"2020127252\",\n    \"creditosAprobados\": 120,\n    \"nombre\": \"Estudiante X\",\n    \"proyecto\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Profesor by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/profesor/{{profesorId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"profesor",
+						"{{profesorId}}"
+					]
+				},
+				"description": "### GET /profesor/{{profesorId}}\n\nThis endpoint retrieves information about a specific professor.\n\n#### Response\n\nThe response will be a JSON object with the following properties:\n\n- `id` (string): The unique identifier of the professor.\n    \n- `cedula` (number): The identification number of the professor.\n    \n- `nombre` (string): The name of the professor.\n    \n- `grupoInvestigacion` (string): The research group associated with the professor.\n    \n- `numeroExtension` (number): The extension number of the professor.\n    \n- `propuestas` (array): An array of proposals associated with the professor.\n    \n\n#### Example\n\n``` json\n{\n  \"id\": \"\",\n  \"cedula\": 0,\n  \"nombre\": \"\",\n  \"grupoInvestigacion\": \"\",\n  \"numeroExtension\": 0,\n  \"propuestas\": []\n}\n\n ```"
+			},
+			"response": [
+				{
+					"name": "Obtener Profesor by Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/profesor/{{profesorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profesor",
+								"{{profesorId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "153"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"99-Yf2gOUV7vPMCfpyGXNXoOiLJT7A\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 May 2024 03:58:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0711ec95-8829-432b-93b9-908fde952fdb\",\n    \"cedula\": 12345678,\n    \"nombre\": \"Profesor X\",\n    \"grupoInvestigacion\": \"TICSW\",\n    \"numeroExtension\": 1234,\n    \"propuestas\": []\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:5000"
+		}
+	]
+}

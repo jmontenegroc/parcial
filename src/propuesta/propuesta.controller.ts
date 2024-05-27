@@ -1,15 +1,33 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, UseInterceptors } from '@nestjs/common';
-import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors/business-errors.interceptor';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { plainToInstance } from 'class-transformer';
+import { PropuestaEntity } from './propuesta';
+import { PropuestaDto } from './propuesta.dto/propuesta.dto';
 import { PropuestaService } from './propuesta.service';
 
+
 @Controller('propuesta')
-@UseInterceptors(BusinessErrorsInterceptor)
 export class PropuestaController {
   constructor(private readonly propuestaService: PropuestaService) {}
 
   @Get()
-  async findAll() {
-    return await this.propuestaService.findAllPropuesta();
+  async findAllPropuesta() {
+    return this.propuestaService.findAllPropuesta();
+  }
+
+  @Get(':id')
+  async findPropuestaById(@Param('id') id: string) {
+    return this.propuestaService.findPropuestaById(id);
+  }
+
+  @Post()
+  async crearPropuesta(@Body() propuestaDto: PropuestaDto) {
+    const propuesta: PropuestaEntity = plainToInstance(PropuestaEntity, propuestaDto);
+    return this.propuestaService.crearPropuesta(propuesta);
+  }
+
+  @Delete(':id')
+  async deletePropuesta(@Param('id') id: string) {
+    return this.propuestaService.deletePropuesta(id);
   }
 }

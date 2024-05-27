@@ -1,10 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-    BusinessError,
-    BusinessLogicException,
-} from 'src/shared/errors/business-errors';
 import { Repository } from 'typeorm';
 import { EstudianteEntity } from './estudiante';
 
@@ -16,17 +12,12 @@ export class EstudianteService {
   ) {}
 
   async findEstudianteById(id: string): Promise<EstudianteEntity> {
-    const estudiante: EstudianteEntity =
-      await this.estudianteRepository.findOne({
-        where: { id },
-        relations: ['artworks', 'exhibitions'],
-      });
-    if (!estudiante)
-      throw new BusinessLogicException(
-        'The estudiante with the given id was not found',
-        BusinessError.NOT_FOUND,
-      );
-
+    const estudiante = await this.estudianteRepository.findOne({where: {id}});
+  
+    if (!estudiante) {
+      throw new Error('Estudiante no encontrado');
+    }
+  
     return estudiante;
   }
 
@@ -34,9 +25,8 @@ export class EstudianteService {
     estudiante: EstudianteEntity,
   ): Promise<EstudianteEntity> {
     if (estudiante.codigo.length != 10)
-      throw new BusinessLogicException(
-        'The estudiante has not a valid codigo',
-        BusinessError.NOT_FOUND,
+      throw new Error(
+        'El código del estudiante debe tener 10 caracteres',
       );
     return await this.estudianteRepository.save(estudiante);
   }

@@ -1,10 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import {
-    BusinessError,
-    BusinessLogicException,
-} from "src/shared/errors/business-errors";
+
 import { Repository } from "typeorm";
 import { ProyectoEntity } from "./proyecto";
 
@@ -17,9 +14,8 @@ export class ProyectoService {
 
   async crearProyecto(proyecto: ProyectoEntity): Promise<ProyectoEntity> {
     if(proyecto.fechaFin < proyecto.fechaInicio){
-        throw new BusinessLogicException(
+        throw new Error(
             "The project has an invalid end date",
-            BusinessError.PRECONDITION_FAILED
         );
     }
     return await this.proyectoRepository.save(proyecto);

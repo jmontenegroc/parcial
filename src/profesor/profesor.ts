@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { PropuestaEntity } from 'src/propuesta/propuesta';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PropuestaEntity } from '../propuesta/propuesta';
 
 @Entity()
 export class ProfesorEntity {

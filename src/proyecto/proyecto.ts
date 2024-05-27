@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { EstudianteEntity } from 'src/estudiante/estudiante';
-import { PropuestaEntity } from 'src/propuesta/propuesta';
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { EstudianteEntity } from '../estudiante/estudiante';
+import { PropuestaEntity } from '../propuesta/propuesta';
 
 @Entity()
 export class ProyectoEntity {
